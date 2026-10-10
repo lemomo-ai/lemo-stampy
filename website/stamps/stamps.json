@@ -1,0 +1,257 @@
+[
+  {
+    "blurb" : "长章 · 双线 · 宋体",
+    "blurb_en" : "Long · double · Song",
+    "category" : "常用",
+    "category_en" : "Basic",
+    "file" : "stamps\/t00.png",
+    "h" : 38,
+    "mm" : [
+      35,
+      13
+    ],
+    "name" : "细框长章",
+    "name_en" : "Fine Long",
+    "w" : 99.25
+  },
+  {
+    "blurb" : "胶囊 · 单线 · 宋体 · 胭脂",
+    "blurb_en" : "Pill · single · Song · crimson",
+    "category" : "常用",
+    "category_en" : "Basic",
+    "file" : "stamps\/t01.png",
+    "h" : 22.5,
+    "mm" : [
+      37,
+      8
+    ],
+    "name" : "胶囊签",
+    "name_en" : "Pill",
+    "w" : 104.25
+  },
+  {
+    "blurb" : "圆章 · 双线 · 宋体",
+    "blurb_en" : "Round · double · Song",
+    "category" : "常用",
+    "category_en" : "Basic",
+    "file" : "stamps\/t02.png",
+    "h" : 61.5,
+    "mm" : [
+      22,
+      22
+    ],
+    "name" : "圆章",
+    "name_en" : "Round",
+    "w" : 61.5
+  },
+  {
+    "blurb" : "他用无效 · 红底白字",
+    "blurb_en" : "“他用无效” · white on red",
+    "category" : "方印",
+    "category_en" : "Seal",
+    "file" : "stamps\/t03.png",
+    "h" : 20.25,
+    "mm" : [
+      7,
+      7
+    ],
+    "name" : "方印 · 白文",
+    "name_en" : "Seal · Red Block",
+    "w" : 20.25
+  },
+  {
+    "blurb" : "限用 · 隶书",
+    "blurb_en" : "“限用” · Li",
+    "category" : "方印",
+    "category_en" : "Seal",
+    "file" : "stamps\/t04.png",
+    "h" : 19.75,
+    "mm" : [
+      4,
+      7
+    ],
+    "name" : "方印 · 朱文",
+    "name_en" : "Seal · Red Text",
+    "w" : 12.25
+  },
+  {
+    "blurb" : "无框 · 楷体 · 藏蓝，像手写",
+    "blurb_en" : "No border · Kai · navy, like handwriting",
+    "category" : "常用",
+    "category_en" : "Basic",
+    "file" : "stamps\/t05.png",
+    "h" : 34.75,
+    "mm" : [
+      22,
+      12
+    ],
+    "name" : "签注",
+    "name_en" : "Note",
+    "w" : 63.25
+  },
+  {
+    "blurb" : "长章 · 粗细线 · Serif",
+    "blurb_en" : "Long · thick-thin · serif",
+    "category" : "英文",
+    "category_en" : "English",
+    "file" : "stamps\/t06.png",
+    "h" : 29.5,
+    "mm" : [
+      37,
+      10
+    ],
+    "name" : "英文长章",
+    "name_en" : "English Long",
+    "w" : 106.75
+  },
+  {
+    "blurb" : "长章 · 单线 · 中英两行",
+    "blurb_en" : "Long · single · two languages",
+    "category" : "英文",
+    "category_en" : "English",
+    "file" : "stamps\/t07.png",
+    "h" : 39.75,
+    "mm" : [
+      30,
+      14
+    ],
+    "name" : "中英双语",
+    "name_en" : "Bilingual",
+    "w" : 84.75
+  },
+  {
+    "blurb" : "长章 · 粗细线 · 仿宋 · 墨",
+    "blurb_en" : "Long · thick-thin · FangSong · ink",
+    "category" : "常用",
+    "category_en" : "Basic",
+    "file" : "stamps\/t08.png",
+    "h" : 31.75,
+    "mm" : [
+      34,
+      11
+    ],
+    "name" : "墨色长章",
+    "name_en" : "Ink Long",
+    "w" : 97
+  },
+  {
+    "blurb" : "圆章 · 单线 · 魏碑 · 藏蓝",
+    "blurb_en" : "Round · single · Wei · navy",
+    "category" : "常用",
+    "category_en" : "Basic",
+    "file" : "stamps\/t09.png",
+    "h" : 58.25,
+    "mm" : [
+      20,
+      20
+    ],
+    "name" : "藏蓝圆章",
+    "name_en" : "Navy Round",
+    "w" : 58.25
+  },
+  {
+    "blurb" : "长章 · 黑体 · 三行",
+    "blurb_en" : "Long · Hei · three lines",
+    "category" : "复印件",
+    "category_en" : "Copies",
+    "file" : "stamps\/t10.png",
+    "h" : 32,
+    "mm" : [
+      28,
+      11
+    ],
+    "name" : "再次复印无效",
+    "name_en" : "No Further Copies",
+    "w" : 80.5
+  },
+  {
+    "blurb" : "长章 · 双线 · 胭脂 · 本人确认",
+    "blurb_en" : "Long · double · crimson · self-certified",
+    "category" : "复印件",
+    "category_en" : "Copies",
+    "file" : "stamps\/t11.png",
+    "h" : 35.5,
+    "mm" : [
+      32,
+      12
+    ],
+    "name" : "与原件一致",
+    "name_en" : "Same as Original",
+    "w" : 91.5
+  },
+  {
+    "blurb" : "胶囊 · 黑体 · 一行写完",
+    "blurb_en" : "Pill · Hei · one line",
+    "category" : "复印件",
+    "category_en" : "Copies",
+    "file" : "stamps\/t12.png",
+    "h" : 19,
+    "mm" : [
+      38,
+      6
+    ],
+    "name" : "身份证复印件",
+    "name_en" : "ID Copy",
+    "w" : 109.75
+  },
+  {
+    "blurb" : "圆章 · 双线 · COPY ONLY",
+    "blurb_en" : "Round · double · COPY ONLY",
+    "category" : "英文",
+    "category_en" : "English",
+    "file" : "stamps\/t13.png",
+    "h" : 65.25,
+    "mm" : [
+      23,
+      23
+    ],
+    "name" : "英文圆章",
+    "name_en" : "English Round",
+    "w" : 65.25
+  },
+  {
+    "blurb" : "胶囊 · Serif · 墨 · 一句话",
+    "blurb_en" : "Pill · serif · ink · one sentence",
+    "category" : "英文",
+    "category_en" : "English",
+    "file" : "stamps\/t14.png",
+    "h" : 18.5,
+    "mm" : [
+      37,
+      6
+    ],
+    "name" : "英文胶囊",
+    "name_en" : "English Pill",
+    "w" : 104.5
+  },
+  {
+    "blurb" : "复印无效 · 红底白字",
+    "blurb_en" : "“复印无效” · white on red",
+    "category" : "方印",
+    "category_en" : "Seal",
+    "file" : "stamps\/t15.png",
+    "h" : 20.25,
+    "mm" : [
+      7,
+      7
+    ],
+    "name" : "方印 · 复印无效",
+    "name_en" : "Seal · Copy Invalid",
+    "w" : 20.25
+  },
+  {
+    "blurb" : "专用 · 楷体 · 胭脂",
+    "blurb_en" : "“专用” · Kai · crimson",
+    "category" : "方印",
+    "category_en" : "Seal",
+    "file" : "stamps\/t16.png",
+    "h" : 19.75,
+    "mm" : [
+      4,
+      7
+    ],
+    "name" : "方印 · 专用",
+    "name_en" : "Seal · Exclusive",
+    "w" : 12.25
+  }
+]

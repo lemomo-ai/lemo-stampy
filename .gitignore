@@ -1,0 +1,10 @@
+.DS_Store
+build/
+Core/.build/
+App/XiaoYinZhang.xcodeproj/
+*.xcuserstate
+# 签名和公证身份只留在本机（照 scripts/release.local.example.sh 写）
+scripts/release.local.sh
+# 测试输出和回归基准（自己用 ./scripts/snapshots.sh --update 生成）
+小印章测试/
+website/_check*.html

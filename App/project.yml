@@ -1,0 +1,57 @@
+name: XiaoYinZhang
+options:
+  bundleIdPrefix: com.lemolab
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+
+packages:
+  StampCore:
+    path: ../Core
+
+targets:
+  XiaoYinZhang:
+    type: application
+    platform: macOS
+    sources:
+      - Sources
+      - Resources/Assets.xcassets
+    dependencies:
+      - package: StampCore
+        product: StampCore
+    info:
+      path: Resources/Info.plist
+      properties:
+        CFBundleName: 小章
+        CFBundleDisplayName: 小章
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleDevelopmentRegion: zh_CN
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.productivity
+        NSHumanReadableCopyright: LemoLab
+        # 官网上的 version.json，「检查更新」读它。网站在公开仓库 lemomo-ai/lemo-stampy 的 GitHub Pages 上。
+        StampyUpdateFeed: "https://lemomo-ai.github.io/lemo-stampy/version.json"
+    settings:
+      base:
+        PRODUCT_NAME: 小章
+        PRODUCT_MODULE_NAME: XiaoYinZhang
+        PRODUCT_BUNDLE_IDENTIFIER: com.lemolab.xiaoyinzhang
+        MARKETING_VERSION: 1.0.0
+        CURRENT_PROJECT_VERSION: 4
+        SWIFT_VERSION: "5.0"
+        # 默认临时签名（ad-hoc），谁拿到源码都能编。有 scripts/release.local.sh 时，
+        # scripts/build.sh 和 release.sh 会在命令行换成里面的 Developer ID 和 Team ID。
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+        # 公证要求 hardened runtime。平时编译也打开，这样平时测的和发出去的是同一种 App。
+        # 不需要额外的 entitlements：辅助功能、读写用户文件、URLSession 在非沙盒 App 里都不用声明，也不发 Apple Events。
+        ENABLE_HARDENED_RUNTIME: YES
+        # 不注入 get-task-allow（调试器附加用）：公证会拒绝带它的 App，平时也不用 Xcode 调试器。
+        CODE_SIGN_INJECT_BASE_ENTITLEMENTS: NO
+        # 平时编译不联网取时间戳；scripts/release.sh 会在命令行换成 --timestamp。
+        OTHER_CODE_SIGN_FLAGS: "--timestamp=none"
+        # 架构不在这里设：平时编译（scripts/build.sh）只出本机的架构，快；
+        # scripts/release.sh 在命令行用 ARCHS="arm64 x86_64" 出通用二进制。
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        COMBINE_HIDPI_IMAGES: YES

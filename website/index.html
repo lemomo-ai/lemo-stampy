@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+  // 语言要在画第一帧之前定下来：?lang= > 上次的选择 > 浏览器语言（zh 开头用中文，否则英文）。
+  (function () {
+    var d = document.documentElement, l = null;
+    try { l = localStorage.getItem("stampy-lang"); } catch (e) {}
+    var q = /[?&]lang=(zh|en)\b/.exec(location.search);
+    if (q) l = q[1];
+    if (l !== "zh" && l !== "en") {
+      var n = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+      l = /^zh/i.test(n) ? "zh" : "en";
+    }
+    d.lang = l === "en" ? "en" : "zh-CN";
+    d.className += " js" + (l === "en" ? " i18n-wait" : "");
+    setTimeout(function () { d.classList.remove("i18n-wait"); }, 1500); // 脚本万一没跑，也别一直藏着
+  })();
+</script>
+<title>小章 Stampy · 给复印件，盖个小小的章</title>
+<meta name="description" content="住在 Mac 菜单栏里的小工具。在预览里点一下，就盖上“仅供××使用，他用无效”。原件不动，另存一份。文件不上传，免费开源，不用注册，没有广告。">
+<meta name="theme-color" content="#FBF1EB">
+<link rel="canonical" href="https://lemomo-ai.github.io/lemo-stampy/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<!-- 分享卡片：页面只有一个地址，所以标题和简介中英文都写上。og:image 必须是完整地址。 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="小章 Stampy">
+<meta property="og:url" content="https://lemomo-ai.github.io/lemo-stampy/">
+<meta property="og:title" content="小章 Stampy · 给复印件，盖个小小的章 · A tiny stamp for your copies">
+<meta property="og:description" content="在预览里点一下，就盖上“仅供××使用，他用无效”。原件不动，另存一份。 “For XX use only” — click once in Preview and it's stamped. Your original stays untouched.">
+<meta property="og:image" content="https://lemomo-ai.github.io/lemo-stampy/ui/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="小章 Stampy：住在 Mac 菜单栏里的小印章 · A tiny stamp that lives in your Mac's menu bar">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="小章 Stampy · 给复印件，盖个小小的章 · A tiny stamp for your copies">
+<meta name="twitter:description" content="在预览里点一下，给复印件盖上“仅供××使用”。Click once in Preview to stamp “For XX use only” on a copy. Free and open source, for Mac.">
+<meta name="twitter:image" content="https://lemomo-ai.github.io/lemo-stampy/ui/og.png">
+<meta name="twitter:image:alt" content="小章 Stampy：住在 Mac 菜单栏里的小印章 · A tiny stamp that lives in your Mac's menu bar">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<!--
+  ┌──────────────────────────────────────────────────────────────┐
+  │ 发版时改这里：data-dmg-size 填 DMG 的大小，比如 "9.6 MB"。       │
+  │ 空着时页面不显示大小；填了以后所有下载按钮旁边都会显示。          │
+  │ 版本号写在页面文字里（搜“1.0”），version.json 也要一起改。      │
+  └──────────────────────────────────────────────────────────────┘
+-->
+<body data-dmg-size="2.5 MB">
+
+<a class="skip" href="#main" data-i18n="skip">跳到正文</a>
+
+<header class="nav" id="top">
+  <a class="brand" href="#top" aria-label="小章 Stampy" data-i18n-aria="brandAria">
+    <span class="mascot" data-mood="normal" data-size="32"></span>
+    <span class="brand-name" data-i18n="brand">小章</span>
+  </a>
+  <nav class="nav-links" aria-label="页面导航" data-i18n-aria="navAria">
+    <a href="#how" data-i18n="navHow">怎么用</a>
+    <a href="#try" data-i18n="navTry">试一试</a>
+    <a href="#workshop" data-i18n="navWorkshop">刻章工坊</a>
+    <a href="#faq" data-i18n="navFaq">常见问题</a>
+  </nav>
+  <div class="lang" role="group" aria-label="语言 / Language">
+    <button type="button" data-set-lang="zh" lang="zh-CN" aria-pressed="true" title="中文">中</button>
+    <button type="button" data-set-lang="en" lang="en" aria-pressed="false" title="English">EN</button>
+  </div>
+  <a class="btn btn-primary btn-small" href="#download" data-i18n="navDownload">下载</a>
+</header>
+
+<main id="main">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="eyebrow">住在 Mac 菜单栏里的小工具</span></p>
+      <h1 data-i18n="h1">给复印件，<br>盖个<span class="squiggle">小小的</span>章</h1>
+      <p class="lead" data-i18n="lead">在预览里点一下，就盖上“仅供××使用，他用无效”。原件不动，另存一份。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-dl" href="https://github.com/lemomo-ai/lemo-stampy/releases/latest/download/Stampy.dmg">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="dlHero">下载小章 1.0</span>
+        </a>
+        <a class="btn btn-ghost" href="#try" data-i18n="tryLink">先在网页上盖一个</a>
+      </div>
+      <p class="hero-meta"><span data-i18n="heroMeta">免费 · macOS 14 及以上 · Apple 芯片和 Intel 都能用</span><span class="dmg-size"></span></p>
+    </div>
+    <div class="hero-visual">
+      <div class="screen">
+        <video class="anim" data-src="media/flow.mp4" data-poster="media/flow.jpg" width="1440" height="900" muted loop playsinline preload="none" data-eager
+          aria-label="动画：点菜单栏的小章拿起印章，移到预览里的文件上点一下，确认后另存一份已盖章的副本。"
+          data-i18n-aria="aFlow"></video>
+      </div>
+      <img class="sticker s1" src="stamps/t02.png" data-en-src="stamps/t13.png" alt="" width="246" height="246">
+      <img class="sticker s2" src="stamps/t03.png" data-en-src="stamps/sticker-en.png" alt="" width="81" height="81">
+      <img class="sticker s3" src="stamps/t16.png" alt="" width="60" height="105">
+      <button class="mascot peek" type="button" data-mood="happy" data-size="64" aria-label="小章：点一下换个表情" data-i18n-aria="peekAria"></button>
+    </div>
+  </section>
+
+  <!-- 一分钟看懂：介绍视频 -->
+  <section class="section film-section" id="film">
+    <div class="section-head reveal">
+      <p class="kicker" data-i18n="filmKicker">一分钟看懂</p>
+      <h2 data-i18n="filmH2">复印件，只用在这件事上</h2>
+      <p data-i18n="filmP">办签证、开银行账户、租房，都要交一沓证件复印件。可复印件一交出去，就可能被挪作他用。盖上“仅供××使用”，这份复印件就只能用在这件事上。</p>
+    </div>
+    <div class="film reveal">
+      <!-- 介绍视频：media/intro.mp4（有旁白）+ 封面 media/intro.jpg。换片子直接覆盖这两个文件。 -->
+      <video id="intro" src="media/intro.mp4" poster="media/intro.jpg" width="1280" height="720" preload="metadata" playsinline
+        aria-label="小章介绍视频" data-i18n-aria="filmAria"></video>
+      <button class="film-play" type="button" aria-controls="intro">
+        <span class="film-pill">
+          <span class="film-btn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.87l11-6.5a1 1 0 0 0 0-1.74l-11-6.5A1 1 0 0 0 8 5.5Z" fill="currentColor"/></svg></span>
+          <span class="film-label"><b data-i18n="filmPlay">播放介绍视频</b><small><span data-i18n="filmNote">有旁白和字幕</span><span class="film-dur"></span></small></span>
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- 三步 -->
+  <section class="section" id="how">
+    <div class="section-head reveal">
+      <p class="kicker" data-i18n="howKicker">三步盖好</p>
+      <h2 data-i18n="howH2">拿起、点一下、存一份</h2>
+      <p data-i18n="howP">不用导出、不用打开别的软件，就在你平时看文件的预览里。</p>
+    </div>
+    <ol class="steps">
+      <li class="step reveal">
+        <div class="step-media"><video class="anim" data-src="media/step1.mp4" data-poster="media/step1.jpg" width="720" height="540" muted loop playsinline preload="none"
+          aria-label="动画：点一下菜单栏的小章，弹出“拿起租房签约”的气泡，印章跟着鼠标走。" data-i18n-aria="aStep1"></video></div>
+        <div class="step-text">
+          <span class="num" aria-hidden="true">1</span>
+          <h3 data-i18n="s1h">拿起印章</h3>
+          <p data-i18n="s1p">点一下菜单栏里的小章，印章就跟着鼠标走。再点一下，或者按 esc，<span class="nw">就放下。</span></p>
+        </div>
+      </li>
+      <li class="step reveal">
+        <div class="step-media"><video class="anim" data-src="media/step2.mp4" data-poster="media/step2.jpg" width="720" height="540" muted loop playsinline preload="none"
+          aria-label="动画：印章移到页面上，滚轮把它调到 125%，点一下盖下去，弹出确认卡片。" data-i18n-aria="aStep2"></video></div>
+        <div class="step-text">
+          <span class="num" aria-hidden="true">2</span>
+          <h3 data-i18n="s2h">点哪儿盖哪儿</h3>
+          <p data-i18n="s2p">移到预览里打开的 PDF 或照片上，滚轮调大小，点一下就盖。章永远完整地留在纸里，不会被页边切掉。</p>
+        </div>
+      </li>
+      <li class="step reveal">
+        <div class="step-media"><video class="anim" data-src="media/step3.mp4" data-poster="media/step3.jpg" width="720" height="540" muted loop playsinline preload="none"
+          aria-label="动画：点“另存为”，菜单栏下弹出“盖好啦”，旁边打开了盖好章的副本。" data-i18n-aria="aStep3"></video></div>
+        <div class="step-text">
+          <span class="num" aria-hidden="true">3</span>
+          <h3 data-i18n="s3h">另存一份</h3>
+          <p data-i18n="s3p">确认一下，存成“_已盖章”的副本。原件一个像素都不动，<span class="nw">想重盖随时再来。</span></p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- 批量 -->
+  <section class="section batch" id="batch">
+    <div class="batch-inner">
+      <div class="section-head batch-head reveal">
+        <p class="kicker" data-i18n="batchKicker">批量盖章</p>
+        <h2 data-i18n="batchH2">一沓材料，一次盖完</h2>
+        <p data-i18n="batchP">办签证、开户要交十几份复印件？把文件，或者整个文件夹，拖到菜单栏的小章上，选好章和位置，一键盖完。这一路连预览都不用开。</p>
+        <ul class="batch-points">
+          <li data-i18n="bp1"><b>拖进来就开</b>拖到菜单栏的小章上，或者从面板点“批量盖章…”</li>
+          <li data-i18n="bp2"><b>位置统一，也能单调</b>九宫格点一下，或者在纸上直接拖；某一份想放别处，就单独挪它一份</li>
+          <li data-i18n="bp3"><b>每一页、第一页、最后一页</b>PDF 按你选的来，照片只有一页</li>
+          <li data-i18n="bp4"><b>一批一个编号</b>记录里是一条，查得到每一份</li>
+        </ul>
+      </div>
+      <div class="batch-shot reveal">
+        <video class="anim" data-src="media/batch.mp4" data-poster="media/batch.jpg" width="1180" height="820" muted loop playsinline preload="none"
+          aria-label="动画：把 4 份文件拖进批量盖章窗口，点“盖 4 份”，每份都打了勾，菜单栏下弹出“盖好啦 · 4 份”。" data-i18n-aria="aBatch"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- 试一试 -->
+  <section class="section try" id="try">
+    <div class="section-head reveal">
+      <p class="kicker" data-i18n="tryKicker">试一试</p>
+      <h2 data-i18n="tryH2">在这张纸上盖一个</h2>
+      <p><span class="for-mouse" data-i18n="tryMouse">鼠标就是印章：滚轮调大小，点一下就盖。</span><span class="for-touch" data-i18n="tryTouch">点一下纸就盖一个，下面的 −/+ 调大小。</span><span data-i18n="tryEngine">这些章和 App 用的是同一个引擎画的。</span></p>
+    </div>
+    <div class="playground reveal">
+      <div class="picker" role="radiogroup" aria-label="选一枚章" data-i18n-aria="pickerAria"></div>
+      <div class="desk" tabindex="0" role="application" aria-label="演示用的纸：点一下盖章，或者按回车在纸上随机盖一个" data-i18n-aria="deskAria">
+        <div class="paper">
+          <div class="paper-title" data-i18n="paperTitle">收 入 证 明</div>
+          <div class="paper-lines" aria-hidden="true"></div>
+          <div class="paper-stamps"></div>
+        </div>
+        <div class="ghost" aria-hidden="true">
+          <img alt="">
+          <div class="hint"><span class="mini"></span><span class="hint-text"></span></div>
+        </div>
+        <div class="demo-toast" role="status" aria-live="polite">
+          <span class="mascot" data-mood="happy" data-size="36"></span>
+          <div><b data-i18n="toastTitle">盖好啦</b><small>No.<span class="demo-id">A7K3Q2</span> · <span data-i18n="toastNote">网页演示，不会保存</span></small></div>
+        </div>
+      </div>
+      <div class="play-bar">
+        <div class="size-ctl">
+          <button type="button" class="icon-btn" data-step="-1" aria-label="小一点" data-i18n-aria="smaller">−</button>
+          <span class="size-val" aria-live="polite">100%</span>
+          <button type="button" class="icon-btn" data-step="1" aria-label="大一点" data-i18n-aria="larger">+</button>
+        </div>
+        <span class="play-count"></span>
+        <div class="play-actions">
+          <button type="button" class="btn btn-chip" data-act="undo" data-i18n="undo">撤销</button>
+          <button type="button" class="btn btn-chip" data-act="clear" data-i18n="clear">清空</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 特点 -->
+  <section class="section" id="features">
+    <div class="section-head reveal">
+      <p class="kicker" data-i18n="featKicker">为什么是小章</p>
+      <h2 data-i18n="featH2">盖章这件小事，做得细一点</h2>
+    </div>
+    <div class="bento">
+      <article class="card split reveal">
+        <div class="split-text">
+          <h3 data-i18n="f1h">多页 PDF，每一页都盖</h3>
+          <p data-i18n="f1p">银行流水十几页？选“每一页都盖”，位置按比例对齐到每一页。哪页不要，点掉缩略图就行。</p>
+        </div>
+        <video class="anim" data-src="media/multipage.mp4" data-poster="media/multipage.jpg" width="720" height="570" muted loop playsinline preload="none"
+          aria-label="动画：确认卡片切到“每一页都盖 · 6 页”，点掉第 6 页的缩略图。" data-i18n-aria="aMulti"></video>
+      </article>
+      <article class="card reveal">
+        <h3 data-i18n="f2h">小，但是很精致</h3>
+        <p data-i18n="f2p">长章约 35mm，圆章 22mm，方印 7mm。压在签名旁边刚刚好，不会把材料盖花。</p>
+        <div class="ruler" aria-hidden="true">
+          <img src="stamps/t00.png" data-en-src="stamps/t06.png" alt="" width="397" height="152" loading="lazy">
+          <div class="ticks"></div>
+          <span class="ruler-label" data-i18n="rulerLabel">35 mm</span>
+        </div>
+      </article>
+      <article class="card reveal">
+        <h3 data-i18n="f3h">原件永远不动</h3>
+        <p data-i18n="f3p">盖章只发生在另存的副本上。原件还是原件，不怕盖错。</p>
+        <div class="files" aria-hidden="true">
+          <div class="file"><span class="sheet"></span><small data-i18n="fileA">收入证明.pdf</small></div>
+          <span class="arrow">→</span>
+          <div class="file stamped"><span class="sheet"><img src="stamps/t00.png" data-en-src="stamps/t06.png" alt="" loading="lazy"></span><small data-i18n="fileB">收入证明_已盖章.pdf</small></div>
+        </div>
+      </article>
+      <article class="card reveal">
+        <h3 data-i18n="f4h">加了密码也能盖</h3>
+        <p data-i18n="f4p">输一次密码就行。盖好的副本用同一个密码锁上，密码不会被保存。</p>
+        <img class="still" src="ui/password.webp" data-en-src="ui/password-en.webp" width="760" height="500" loading="lazy"
+          alt="输入密码的卡片：小章期待地看着你。" data-i18n-alt="altPassword">
+      </article>
+      <article class="card reveal">
+        <h3 data-i18n="f5h">每一次都有编号</h3>
+        <p data-i18n="f5p">章上带日期和编号。在“盖过的章”里查得到哪天、给谁、盖了哪份。</p>
+        <img class="still" src="ui/history.webp" data-en-src="ui/history-en.webp" width="1600" height="1280" loading="lazy"
+          alt="“盖过的章”窗口，列出了编号、日期和文件。" data-i18n-alt="altHistory">
+      </article>
+      <article class="card full local reveal">
+        <div class="local-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="21" rx="3.5" fill="none" stroke="currentColor" stroke-width="3.2"/><path d="M4 37h40" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="m18.5 20.5 4 4 7-7.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div>
+          <h3 data-i18n="f6h">文件不上传</h3>
+          <p data-i18n="f6p">盖章全在你的 Mac 上完成。证件、流水这些材料，不会上传到<span class="nw">任何地方。</span></p>
+        </div>
+        <a class="more" href="#privacy" data-i18n="f6link">隐私说明 →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- 工坊 -->
+  <section class="section" id="workshop">
+    <div class="section-head reveal">
+      <p class="kicker" data-i18n="wsKicker">刻章工坊</p>
+      <h2 data-i18n="wsH2">刻一枚自己的章</h2>
+      <p data-i18n="wsP">从 17 个模板开始：常用、复印件、英文、方印。写给谁、做什么、字体、边框、颜色、印泥质感，都能改。</p>
+    </div>
+    <div class="workshop-shot reveal">
+      <video class="anim" data-src="media/workshop.mp4" data-poster="media/workshop.jpg" width="1320" height="888" muted loop playsinline preload="none"
+        aria-label="动画：刻章工坊里轮流选中几枚章，大预览跟着变。" data-i18n-aria="aWorkshop"></video>
+    </div>
+    <div class="gallery reveal">
+      <div class="tabs" role="group" aria-label="模板分类" data-i18n-aria="tabsAria"></div>
+      <div class="grid"></div>
+    </div>
+  </section>
+
+  <!-- 小章 -->
+  <section class="section meet">
+    <div class="meet-inner reveal">
+      <div class="meet-copy">
+        <p class="kicker" data-i18n="meetKicker">认识一下</p>
+        <h2 data-i18n="meetH2">这是小章</h2>
+        <p data-i18n="meetP">它住在你的菜单栏里。拿起印章时会期待，盖好了会开心，遇到点小麻烦会皱眉，<span class="nw">闲着的时候</span><span class="nw">会打瞌睡。</span></p>
+        <p class="tip" data-i18n="meetTip">点点它试试。</p>
+      </div>
+      <div class="moods">
+        <button type="button" class="mood" data-mood="normal"><span class="mascot" data-mood="normal" data-size="72"></span><small data-i18n="mNormal">平常</small></button>
+        <button type="button" class="mood" data-mood="expectant"><span class="mascot" data-mood="expectant" data-size="72"></span><small data-i18n="mExpectant">期待</small></button>
+        <button type="button" class="mood" data-mood="happy"><span class="mascot" data-mood="happy" data-size="72"></span><small data-i18n="mHappy">开心</small></button>
+        <button type="button" class="mood" data-mood="troubled"><span class="mascot" data-mood="troubled" data-size="72"></span><small data-i18n="mTroubled">为难</small></button>
+        <button type="button" class="mood" data-mood="sleepy"><span class="mascot" data-mood="sleepy" data-size="72"></span><small data-i18n="mSleepy">犯困</small></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 隐私 -->
+  <section class="section" id="privacy">
+    <div class="privacy reveal">
+      <div class="privacy-copy">
+        <p class="kicker" data-i18n="pvKicker">隐私说明</p>
+        <h2 data-i18n="pvH2">文件不上传</h2>
+        <p data-i18n="pvP">盖章全程在你的 Mac 上完成：读页面、画章、存副本，你的文件不会上传到任何地方，盖过的记录也只存在你自己的电脑里。小章只在你点“检查更新…”时连一下网站，看看有没有新版本；不收集任何信息，也不会自己下载安装。</p>
+      </div>
+      <ul class="privacy-list">
+        <li>
+          <span class="pv-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M2 19.5h20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <div data-i18n="pv1"><b>盖章在本机</b>读页面、画章、存副本，都在你的 Mac 上</div>
+        </li>
+        <li>
+          <span class="pv-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.5h8l4 4V20a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 6 20V3.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12h6M9 15.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <div data-i18n="pv2"><b>记录在本机</b>盖过的章只存在你自己的电脑里</div>
+        </li>
+        <li>
+          <span class="pv-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3M19.5 4.5v3.6h-3.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div data-i18n="pv3"><b>检查更新，只在你点的时候</b>只读取一个公开的 version.json，不带任何标识</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 常见问题 -->
+  <section class="section" id="faq">
+    <div class="section-head reveal">
+      <p class="kicker" data-i18n="faqKicker">常见问题</p>
+      <h2 data-i18n="faqH2">你可能想知道</h2>
+    </div>
+    <div class="faq">
+      <details class="reveal" open>
+        <summary data-i18n="q1">能盖哪些文件？</summary>
+        <p data-i18n="a1">在预览里打开的 PDF 和照片（JPG、PNG、HEIC 等）都可以。多页 PDF 可以只盖一页，也可以每一页都盖；加了密码的 PDF，输一次密码也能盖。</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="q2">原文件会被改吗？</summary>
+        <p data-i18n="a2">不会。章只盖在另存的副本上，副本默认叫“原文件名_已盖章”，存在原文件旁边。另存时也不能覆盖原文件，原件一个像素都不动。</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="q3">我的文件会被上传吗？</summary>
+        <p data-i18n="a3">不会。盖章全程在你的 Mac 上完成：读页面、画章、存副本，你的文件不会上传到任何地方，盖过的记录也只存在你自己的电脑里。小章只在你点“检查更新…”时连一下网站，看看有没有新版本；不收集任何信息，也不会自己下载安装。</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="q4">为什么要开辅助功能权限？</summary>
+        <p data-i18n="a4">要把章盖到副本里一模一样的位置，小章得知道预览里打开的是哪份文件、你点在了哪一页的哪儿，macOS 只通过辅助功能权限提供这些信息。第一次打开时，小章会一步步带你去系统设置 › 隐私与安全性 › 辅助功能里打开它。它只用这个权限看预览里是哪份文件、你点在了哪儿；不想用了，在同一个地方关掉就行。</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="q5">为什么只支持预览？</summary>
+        <p data-i18n="a5">小章读的是预览的辅助功能信息：哪份文件、第几页、页面在屏幕上的位置。每个看图软件给出的信息都不一样，我们先把 Mac 自带、人人都有的预览做到最稳。不想开预览的话，把文件拖到菜单栏的小章上，用批量盖章就行。</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="q6">能一次盖很多份吗？</summary>
+        <p data-i18n="a6">能。把一沓文件或整个文件夹拖到菜单栏的小章上，就会打开“批量盖章”：统一选章、位置和要盖的页，一键盖完。副本默认存在原文件旁边，也可以统一放进一个文件夹，重名会自动加序号，不覆盖任何文件。</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="q7">盖的这个章是什么？</summary>
+        <p data-i18n="a7">它是你本人写在复印件上的用途声明，常见的写法是“仅供××使用，他用无效”：这份复印件交给谁、做什么用，一眼就清楚，不容易被挪作他用。它不代表任何机构，小章也不提供仿机构印章的样式。</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="q8">免费吗？</summary>
+        <p data-i18n="a8">免费。下载就能用，不用注册，没有广告。源码也公开在 <a href="https://github.com/lemomo-ai/lemo-stampy">GitHub</a>，用 MIT 许可证。</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="q9">需要什么系统？</summary>
+        <p data-i18n="a9">macOS 14 Sonoma 及以上。Apple 芯片和 Intel 的 Mac 都能用。</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="q10">怎么更新？</summary>
+        <p data-i18n="a10">点菜单栏的小章，在面板里点“检查更新…”。有新版本时它会告诉你，点一下就打开这个页面；下载后拖进应用程序替换旧的就行，你的印章和记录都还在。小章不会自己下载安装。</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="q11">遇到问题，怎么反馈？</summary>
+        <p data-i18n="a11">到 <a href="https://github.com/lemomo-ai/lemo-stampy/issues">GitHub Issues</a> 告诉我们。写上 macOS 版本和出问题前做了什么，能更快找到原因。也欢迎提想法。</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 下载 -->
+  <section class="download" id="download">
+    <div class="download-card reveal">
+      <span class="mascot big" data-mood="expectant" data-size="96"></span>
+      <h2 data-i18n="dlH2">把小章接回家</h2>
+      <p data-i18n="dlP">免费下载，不用注册，没有广告。</p>
+      <a class="btn btn-primary btn-large btn-dl" href="https://github.com/lemomo-ai/lemo-stampy/releases/latest/download/Stampy.dmg">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 3v10m0 0-4-4m4 4 4-4M4 16h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-i18n="dlBtn">下载小章 1.0</span>
+      </a>
+      <p class="req"><span data-i18n="dlReq">macOS 14 Sonoma 及以上 · Apple 芯片和 Intel</span><span class="dmg-size"></span></p>
+      <ol class="install">
+        <li data-i18n="in1"><b>1</b>打开下载的 Stampy.dmg，把小章拖进应用程序</li>
+        <li data-i18n="in2"><b>2</b>打开小章，它就住进菜单栏了</li>
+        <li data-i18n="in3"><b>3</b>按提示在辅助功能里打开小章</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="mascot" data-mood="sleepy" data-size="28"></span>
+      <span><b>小章 Stampy</b><small data-i18n="tagline">小小一枚，安心一点。</small></span>
+    </div>
+    <nav class="footer-links" aria-label="更多" data-i18n-aria="footerAria">
+      <a href="#download" data-i18n="ftDownload">下载</a>
+      <a href="#privacy" data-i18n="ftPrivacy">隐私说明</a>
+      <a href="https://github.com/lemomo-ai/lemo-stampy/issues" data-i18n="ftFeedback">反馈</a>
+      <a href="https://github.com/lemomo-ai/lemo-stampy">GitHub</a>
+    </nav>
+    <p class="fine"><span data-i18n="license">免费下载使用。小章以 <a href="https://github.com/lemomo-ai/lemo-stampy/blob/main/LICENSE">MIT 许可证</a>开源，<a href="https://github.com/lemomo-ai/lemo-stampy">源码在 GitHub</a>。</span> © 2026 LemoLab</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>找不到这一页 · Page not found · 小章 Stampy</title>
+<!-- GitHub Pages 会在任何不存在的地址下显示这一页，所以样式和图标都写在这里面，不依赖相对路径。 -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect width='36' height='36' rx='11'/%3E%3C/clipPath%3E%3C/defs%3E%3Cg clip-path='url(%23c)'%3E%3Crect width='36' height='36' fill='%23C84936'/%3E%3Crect y='-3' width='36' height='36' rx='11' fill='%23E0533D'/%3E%3C/g%3E%3Crect x='11' y='14' width='4' height='6' rx='2' fill='%23FFF6F0'/%3E%3Crect x='21' y='14' width='4' height='6' rx='2' fill='%23FFF6F0'/%3E%3C/svg%3E">
+<style>
+  :root { color-scheme: light; --paper: #FBF1EB; --ink: #3B2A26; --ink2: #7E665F; --coral-deep: #D2402E; --dot: #EECDBF;
+    --round: ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; min-height: 100dvh; display: grid; place-items: center; padding: 32px 16px;
+    background: var(--paper); color: var(--ink); text-align: center;
+    font: 16px/1.7 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1.4px); background-size: 22px 22px;
+  }
+  main { max-width: 440px; background: #fff; border-radius: 28px; padding: 40px 28px 36px;
+    box-shadow: 0 0 0 1px rgba(150, 70, 50, .10), 0 12px 32px rgba(150, 70, 50, .20); }
+  svg { width: 88px; height: 88px; display: block; margin: 0 auto 18px; }
+  h1 { font: 600 26px/1.3 var(--round); margin: 0 0 6px; }
+  p { margin: 0; color: var(--ink2); }
+  .en { font-size: 15px; margin-top: 2px; }
+  a.btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; height: 48px; padding: 0 24px; border-radius: 999px;
+    background: var(--coral-deep); color: #fff; text-decoration: none; font: 600 16px/1 var(--round);
+    box-shadow: 0 6px 18px rgba(210, 64, 46, .32), inset 0 -3px 0 rgba(0, 0, 0, .12); }
+  a.btn:focus-visible { outline: 3px solid #F7B9A9; outline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <!-- 小章“为难”的表情 -->
+  <svg viewBox="0 0 36 36" aria-hidden="true"><defs><clipPath id="c"><rect width="36" height="36" rx="11"/></clipPath></defs>
+    <g clip-path="url(#c)"><rect width="36" height="36" fill="#C84936"/><rect y="-3" width="36" height="36" rx="11" fill="#E0533D"/>
+    <ellipse cx="10.5" cy="7" rx="4.5" ry="2" fill="#fff" fill-opacity=".35"/></g>
+    <rect x="10" y="16" width="6" height="2" rx="1" fill="#FFF6F0" transform="rotate(12 13 17)"/>
+    <rect x="20" y="16" width="6" height="2" rx="1" fill="#FFF6F0" transform="rotate(-12 23 17)"/>
+    <rect x="15" y="23" width="6" height="2" rx="1" fill="#FFF6F0"/></svg>
+  <h1>这一页找不到了</h1>
+  <p>可能是地址打错了，或者页面已经搬走了。</p>
+  <p class="en" lang="en">Page not found. The link may be mistyped, or the page has moved.</p>
+  <a class="btn" id="home" href="/lemo-stampy/">回首页 · <span lang="en">Home</span></a>
+</main>
+<script>
+  // 站点在 /lemo-stampy/ 下；本地预览时在根目录。
+  (function () {
+    var a = document.getElementById("home");
+    a.href = location.pathname.indexOf("/lemo-stampy/") === 0 ? "/lemo-stampy/" : "/";
+  })();
+</script>
+</body>
+</html>
