@@ -106,9 +106,9 @@ Local builds are ad-hoc signed, so macOS may ask you to turn Accessibility on ag
 
 ## More from LemoLab
 
-- 🎬 **[Lemo-Opuscar](https://github.com/lemomo-ai/lemo-opuscar)**: 51 film styles, each with a short film made entirely in code. ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-opuscar?style=social)
-- 📸 **[lemo-wake](https://github.com/lemomo-ai/lemo-wake)**: one picture in, a seamless loop of about five seconds out. ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-wake?style=social)
-- 🍋 **[lemo-mod](https://github.com/lemomo-ai/lemo-mod)**: re-skin Claude Code with 21 styles, in the terminal and the desktop app. ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-mod?style=social)
+- 🎬 **[Lemo-Opuscar](https://github.com/lemomo-ai/lemo-opuscar)**: 51 film styles, each with a short film made entirely in code.
+- 📸 **[lemo-wake](https://github.com/lemomo-ai/lemo-wake)**: one picture in, a seamless loop of about five seconds out.
+- 🍋 **[lemo-mod](https://github.com/lemomo-ai/lemo-mod)**: re-skin Claude Code with 21 styles, in the terminal and the desktop app.
 
 <sub>LemoLab · by Lemomo</sub>
 

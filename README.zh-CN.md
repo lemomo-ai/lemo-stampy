@@ -103,9 +103,9 @@ macOS 14 Sonoma 及以上，Apple 芯片和 Intel 都能用。
 
 ## LemoLab 的其他项目
 
-- 🎬 **[Lemo-Opuscar](https://github.com/lemomo-ai/lemo-opuscar)**：51 种影片风格，每种都配一支完全用代码做出来的短片。 ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-opuscar?style=social)
-- 📸 **[lemo-wake](https://github.com/lemomo-ai/lemo-wake)**：一张图进去，一段约 5 秒、无缝循环的动图出来。 ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-wake?style=social)
-- 🍋 **[lemo-mod](https://github.com/lemomo-ai/lemo-mod)**：给 Claude Code 换上 21 套风格，终端和桌面 App 都能用。 ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-mod?style=social)
+- 🎬 **[Lemo-Opuscar](https://github.com/lemomo-ai/lemo-opuscar)**：51 种影片风格，每种都配一支完全用代码做出来的短片。
+- 📸 **[lemo-wake](https://github.com/lemomo-ai/lemo-wake)**：一张图进去，一段约 5 秒、无缝循环的动图出来。
+- 🍋 **[lemo-mod](https://github.com/lemomo-ai/lemo-mod)**：给 Claude Code 换上 21 套风格，终端和桌面 App 都能用。
 
 <sub>LemoLab · by Lemomo</sub>
 
