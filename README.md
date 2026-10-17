@@ -16,6 +16,8 @@ A little helper that lives in your Mac's menu bar: click once in Preview to stam
 &nbsp;·&nbsp;
 [**Website · 网站**](https://lemomo-ai.github.io/lemo-stampy/)
 
+**New (2026-10-11):** Stampy is open source now, under the MIT license.
+
 **English** | [中文](README.zh-CN.md)
 
 ![version](https://img.shields.io/badge/version-1.0.0-d9573f) ![macOS](https://img.shields.io/badge/macOS-14%2B-555) ![Apple silicon & Intel](https://img.shields.io/badge/Apple%20silicon%20%26%20Intel-universal-555) ![price](https://img.shields.io/badge/price-free-6a9a5b) ![license](https://img.shields.io/badge/license-MIT-555)
@@ -101,5 +103,15 @@ Local builds are ad-hoc signed, so macOS may ask you to turn Accessibility on ag
 ## License
 
 [MIT](LICENSE). Free to download, use, change and share.
+
+## More from LemoLab
+
+- 🎬 **[Lemo-Opuscar](https://github.com/lemomo-ai/lemo-opuscar)**: 51 film styles, each with a short film made entirely in code. ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-opuscar?style=social)
+- 📸 **[lemo-wake](https://github.com/lemomo-ai/lemo-wake)**: one picture in, a seamless loop of about five seconds out. ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-wake?style=social)
+- 🍋 **[lemo-mod](https://github.com/lemomo-ai/lemo-mod)**: re-skin Claude Code with 21 styles, in the terminal and the desktop app. ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-mod?style=social)
+
+<sub>LemoLab · by Lemomo</sub>
+
+⭐ Star this repo · 👀 Watch → Custom → Releases to hear about new versions · Follow [@lemomo_ai](https://x.com/lemomo_ai)
 
 <p align="center"><sub>Stampy. A small stamp, for peace of mind. · LemoLab</sub></p>

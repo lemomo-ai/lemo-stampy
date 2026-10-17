@@ -160,6 +160,12 @@
     ftDownload: "Download",
     ftPrivacy: "Privacy",
     ftFeedback: "Feedback",
+    star: "Star",
+    starAria: "Star Stampy on GitHub",
+    moreH: "More from LemoLab",
+    moreOpuscar: "51 film styles, each with a short film made entirely in code.",
+    moreWake: "One picture in, a seamless loop of about five seconds out.",
+    moreMod: "Re-skin Claude Code with 21 styles, in the terminal and the desktop app.",
     license: 'Free to download and use. Stampy is open source under the <a href="https://github.com/lemomo-ai/lemo-stampy/blob/main/LICENSE">MIT License</a>, with <a href="https://github.com/lemomo-ai/lemo-stampy">source on GitHub</a>.',
   };
 
@@ -593,6 +599,19 @@
     tabs.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => { activeCat = t.dataset.cat || null; draw(); }));
     draw();
   }
+
+  // ---------- GitHub 星数：顶栏点星按钮上显示；一小时内用上次读到的，读不到就不显示数字 ----------
+  (() => {
+    const el = document.querySelector("[data-stars]");
+    if (!el) return;
+    const show = (n) => { el.textContent = n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, "") + "k" : String(n); el.hidden = false; };
+    try { const c = JSON.parse(sessionStorage.getItem("stampy-stars") || "null"); if (c && Date.now() - c.t < 36e5) { show(c.n); return; } } catch (e) { /* 读不到就重新取 */ }
+    fetch("https://api.github.com/repos/lemomo-ai/lemo-stampy").then((r) => (r.ok ? r.json() : null)).then((d) => {
+      if (!d || typeof d.stargazers_count !== "number") return;
+      show(d.stargazers_count);
+      try { sessionStorage.setItem("stampy-stars", JSON.stringify({ n: d.stargazers_count, t: Date.now() })); } catch (e) { /* 无痕模式等：不记也照常显示 */ }
+    }).catch(() => {});
+  })();
 
   // ---------- 开始 ----------
   showDmgSize();

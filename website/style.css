@@ -142,6 +142,15 @@ button.mascot { border: 0; padding: 0; background: none; }
 .lang button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 3px rgba(150, 70, 50, .18); }
 .nav-links + .lang { margin-left: 4px; }
 
+/* GitHub 点星：和语言切换同一种浅色胶囊，星数读到了才显示 */
+.gh-star { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; border-radius: 999px; background: var(--chip); box-shadow: inset 0 0 0 1px var(--line);
+  color: var(--ink); text-decoration: none; font: var(--bold) 13px/1 var(--round); white-space: nowrap; flex: none; transition: background .2s, color .2s; }
+.gh-star svg { width: 15px; height: 15px; flex: none; }
+.gh-star:hover { background: var(--coral-soft); color: var(--coral-ink); }
+.gh-star .gh-n { font-weight: var(--bold); font-variant-numeric: tabular-nums; padding-left: 7px; border-left: 1px solid var(--coral-line); }
+.gh-star .gh-n::before { content: "★ "; color: var(--coral); }
+.gh-star .gh-n[hidden] { display: none; }
+
 /* ---------- 首屏 ---------- */
 .hero {
   max-width: var(--max); margin: 0 auto;
@@ -541,6 +550,16 @@ html[lang="en"] .sticker.s3 { display: none; }
 .footer-links a:hover { color: var(--coral-ink); background: rgba(253, 227, 219, .6); }
 .fine { grid-column: 1 / -1; font-size: 12px; color: var(--ink2); }
 
+/* 页脚上面：LemoLab 的其他项目 */
+.more { max-width: var(--max); margin: 0 auto; padding: 32px var(--gutter) 28px; border-bottom: 1px solid var(--line); }
+.more h2 { font-size: 15px; color: var(--ink2); }
+.more-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.more-grid a { display: flex; flex-direction: column; gap: 4px; padding: 16px 20px; border-radius: 18px; background: var(--card); box-shadow: var(--shadow-card); color: var(--ink2); text-decoration: none; font-size: 14px; line-height: 1.6; transition: transform .18s cubic-bezier(.3, 1.6, .5, 1), box-shadow .2s; }
+.more-grid a:hover { transform: translateY(-2px); box-shadow: var(--shadow-float); }
+.more-grid b { font: var(--bold) 16px/1.3 var(--round); color: var(--ink); }
+.more-grid b::after { content: " ↗"; color: var(--coral); font-weight: 500; }
+.more-by { margin: 14px 0 0; font-size: 12px; color: var(--ink3); }
+
 /* ---------- 窄屏 ---------- */
 @media (max-width: 920px) {
   .batch-inner { grid-template-columns: 1fr; }
@@ -566,7 +585,16 @@ html[lang="en"] .sticker.s3 { display: none; }
 @media (max-width: 760px) {
   .nav-links { display: none; }
   .lang { margin-left: auto; }
+  .more-grid { grid-template-columns: 1fr; }
 }
+/* 手机：星数读到了就只留「★ 25」；再窄放不下就整个收起（页脚还有 GitHub 链接） */
+@media (max-width: 520px) {
+  .gh-star:has(.gh-n:not([hidden])) .gh-t, .gh-star:has(.gh-n:not([hidden])) svg { display: none; }
+  .gh-star { padding: 0 10px; }
+  .gh-star .gh-n { padding-left: 0; border-left: 0; }
+}
+@media (max-width: 400px) { html:lang(en) .gh-star { display: none; } }
+@media (max-width: 340px) { .gh-star { display: none; } }
 @media (max-width: 640px) {
   html { scroll-padding-top: 72px; }
   body { font-size: 15.5px; }

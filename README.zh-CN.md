@@ -16,6 +16,8 @@ A little helper that lives in your Mac's menu bar: click once in Preview to stam
 &nbsp;·&nbsp;
 [**网站 · Website**](https://lemomo-ai.github.io/lemo-stampy/)
 
+**最新（2026-10-11）：** 小章以 MIT 许可证开源了。
+
 [English](README.md) | **中文**
 
 ![version](https://img.shields.io/badge/version-1.0.0-d9573f) ![macOS](https://img.shields.io/badge/macOS-14%2B-555) ![Apple silicon & Intel](https://img.shields.io/badge/Apple%20silicon%20%26%20Intel-universal-555) ![price](https://img.shields.io/badge/price-free-6a9a5b) ![license](https://img.shields.io/badge/license-MIT-555)
@@ -98,5 +100,15 @@ macOS 14 Sonoma 及以上，Apple 芯片和 Intel 都能用。
 ## 授权
 
 [MIT 许可证](LICENSE)。免费下载、使用、修改和分享。
+
+## LemoLab 的其他项目
+
+- 🎬 **[Lemo-Opuscar](https://github.com/lemomo-ai/lemo-opuscar)**：51 种影片风格，每种都配一支完全用代码做出来的短片。 ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-opuscar?style=social)
+- 📸 **[lemo-wake](https://github.com/lemomo-ai/lemo-wake)**：一张图进去，一段约 5 秒、无缝循环的动图出来。 ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-wake?style=social)
+- 🍋 **[lemo-mod](https://github.com/lemomo-ai/lemo-mod)**：给 Claude Code 换上 21 套风格，终端和桌面 App 都能用。 ![stars](https://img.shields.io/github/stars/lemomo-ai/lemo-mod?style=social)
+
+<sub>LemoLab · by Lemomo</sub>
+
+⭐ 点个星 · 👀 Watch → Custom → Releases，有新版本会通知你 · 关注 [@lemomo_ai](https://x.com/lemomo_ai)
 
 <p align="center"><sub>小章。小小一枚，安心一点。 · LemoLab</sub></p>
